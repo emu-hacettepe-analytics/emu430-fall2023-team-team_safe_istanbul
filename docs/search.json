@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Team XXX",
+    "title": "Team Safe İstanbul",
     "section": "",
-    "text": "This is our project webpage.\nPlease stay tuned to follow our project activities.\nThis is our template.\n\nTeam Members\n\nEdin_Džeko\nDušan Tadić\nFrederico Rodrigues de Paula Santos\nSebastian Szymański\n\n\n\nProject Topic\n\n\nData Set\n\n\n\n\n Back to top"
+    "text": "This is our project webpage.\nPlease stay tuned to follow our project activities.\n\nTeam Members\n\nÖmer Faruk Çiftçi\nDoğa Yağmur Deniz - link eklenecek\nMuhammed Emre Erkan - link eklenecek\nCemil Neşe - link eklenecek\nAhmet Taha Karakaya - link eklenecek\n\n\n\nProject Topic\nWe will utilize three datasets provided by the Istanbul Metropolitan Municipality.\nThe first dataset, titled “Earthquake Scenario Analysis Results”, contains the outcomes of analyses conducted based on a 7.5 Mw nighttime earthquake scenario.\nThe second dataset, “Neighborhood-Based Building Numbers in 2017”, comprises information on the number of buildings in Istanbul’s neighborhoods. These buildings are categorized by their construction year and the number of floors.\nThe third dataset is “Municipality Population in 2019”, contains population of Istanbul by districts in 2019.\nOur objective is to compile a comprehensive report and identify the districts in Istanbul that are most susceptible to potential earthquakes. We aim to create an ordered priority list for neighborhoods and develop a risk map for Istanbul, taking geographical coordinates into account.\n\n\nData Set\n\nEarthquake Scenario Analysis Results\nNeighborhood-Based Building Numbers in 2017\nMunicipality Population in 2019\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "about.html",
@@ -16,7 +16,7 @@
   {
     "objectID": "analysis.html",
     "href": "analysis.html",
-    "title": "Analysis",
+    "title": "Analysis - Team Safe Istanbul",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n Back to top"
   },
@@ -25,6 +25,6 @@
     "href": "data.html",
     "title": "Data",
     "section": "",
-    "text": "Data source: xxx\n\n\n\n Back to top"
+    "text": "Data source: Istanbul Metropolitan Municipality\n\n\n\n Back to top"
   }
 ]
