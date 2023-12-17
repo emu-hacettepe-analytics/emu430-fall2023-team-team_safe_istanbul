@@ -27,7 +27,7 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
         code-summary: "Show the code"
     ---
 
-    ```{r}
+    ```{r class.source = "fold-hide"}
     library(ggplot2)
     library(tidyverse)
     library(dplyr)
@@ -61,6 +61,7 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
 3.  [Municipality Population in 2019](https://data.ibb.gov.tr/tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24)
 
     ```{r}
+
     library(readxl)
     nufus <- read_excel("belediye_nufuslar_2019.xlsx")
     str(nufus)
