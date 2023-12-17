@@ -26,11 +26,8 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
 2.  [Neighborhood-Based Building Numbers in 2017](https://data.ibb.gov.tr/tr/dataset/mahalle-bazli-bina-analiz-verisi/resource/cef193d5-0bd2-4e8d-8a69-275c50288875)
 
     ```{r}
-    library(dplyr)
-    ```
-
-    ```{r}
     library(readr)
+    library(dplyr)
     mahalle_bazli_bina <- read.csv("mahalle_bazli_bina_2017.csv")
     colnames(mahalle_bazli_bina) <- c("id", "ilce_adi", "mahalle_adi", "mahalle_kodu", "once_1980", "ara_1980_2000", "sonra_2000", "ara_1_4_kat", "ara_5_9_kat", "ara_9_19_kat")
     toplam_bina <- mahalle_bazli_bina %>% 
