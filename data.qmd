@@ -74,3 +74,40 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
     ```
 
     You can also download this dataset as [R.Data](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/nufus.RData) file.
+
+    **An Overview**
+
+    ```{r}
+    library(ggplot2)
+    vis <- deprem_analiz %>% 
+      inner_join(mahalle_bazli_bina, by = "id") %>%
+      select(ilce_adi.x, ara_1_4_kat, ara_5_9_kat, ara_9_19_kat, toplam_bina, can_kaybi_sayisi) 
+       
+    vis %>% ggplot(aes(x = toplam_bina, y = can_kaybi_sayisi, color = ilce_adi.x )) + geom_abline(slope = log10(10)/log10(100),intercept = 0) +
+      scale_x_log10()+
+      scale_y_log10()+
+      geom_point()
+      
+    ```
+
+    ```{r}
+
+    vis2 <- deprem_analiz %>% 
+      inner_join(mahalle_bazli_bina, by = "id") %>%
+      select(ilce_adi.x,once_1980, ara_1980_2000, sonra_2000, toplam_bina, can_kaybi_sayisi) %>% 
+      group_by(ilce_adi.x) %>%
+      summarize(toplam_once_1980 = sum(once_1980), toplam_ara_1980_2000 = sum(ara_1980_2000), toplam_sonra_2000 = sum(sonra_2000))
+
+    # Bar chart çizimi
+    ggplot(vis2, aes(x = ilce_adi.x)) +
+      geom_bar(aes(y = toplam_once_1980), stat = "identity", fill = "blue", position = "dodge") +
+      geom_bar(aes(y = toplam_ara_1980_2000), stat = "identity", fill = "green", position = "dodge") +
+      geom_bar(aes(y = toplam_sonra_2000), stat = "identity", fill = "red", position = "dodge") +
+      labs(title = "Toplam Değerler - İlçelere Göre", x = "İlçe Adı", y = "Toplam Değer") +
+      scale_fill_manual(values = c("Once 1980" = "blue", "Ara 1980-2000" = "green", "Sonra 2000" = "red"),
+                        name = "Zaman Aralığı",
+                        labels = c("Once 1980", "Ara 1980-2000", "Sonra 2000")) +
+      theme_minimal() +
+      theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))+
+      guides(fill = guide_legend(title = "Zaman Aralığı"))
+    ```
