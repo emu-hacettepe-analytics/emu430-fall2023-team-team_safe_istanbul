@@ -13,7 +13,7 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
 
 1.  [Earthquake Scenario Analysis Results](https://data.ibb.gov.tr/tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193)
 
-    In this dataset some column names has been changed. Structure and first 10 observation can be seen below.
+    In this dataset some column names has been changed. Structure and first 10 observation can be seen below. Download [R.Data](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/deprem_analiz.RData) file to see the entire dataframe.
 
     ```{r}
 
@@ -42,22 +42,20 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
       select(toplam_bina)
     mahalle_bazli_bina <- cbind(mahalle_bazli_bina, toplam_bina)
     str(mahalle_bazli_bina)
-    head(mahalle_bazli_bina, n = 10L)
     save(mahalle_bazli_bina, file = "mahalle_bazli_bina.RData")
     ```
 
+    A new column has been created to examine buildings in districts separately. You can see the first 10 district that have highest number of buildings.
+
     ```{r}
-    #mahalle_bazli_bina %>% 
-      #group_by(ilce_adi) %>%
-      #summarize(ilce_bazli_bina = sum(toplam_bina)) %>%
-      #arrange(ilce_bazli_bina) %>% 
-      #ggplot(aes(ilce_bazli_bina, fill = ilce_adi)) + geom_histogram(binwidth = 4000)
-
-
-
-
-
+    mahalle_bazli_bina %>% 
+      group_by(ilce_adi) %>%
+      summarize(ilce_bazli_bina = sum(toplam_bina)) %>%
+      arrange(desc(ilce_bazli_bina)) %>%
+      head(n = 10L)
     ```
+
+    The dataset contains too much rows. Refer to [R.Data](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/mahalle_bazli_bina.RData) file.
 
 3.  [Municipality Population in 2019](https://data.ibb.gov.tr/tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24)
 
@@ -71,3 +69,5 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
     head(nufus, n = 10L)
     save(nufus, file = "nufus.RData")
     ```
+
+    You can also download this dataset as [R.Data](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/nufus.RData) file.

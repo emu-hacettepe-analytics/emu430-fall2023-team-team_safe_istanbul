@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Data Sets</h1>
 <ol type="1">
 <li><p><a href="https://data.ibb.gov.tr/tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193">Earthquake Scenario Analysis Results</a></p>
-<p>In this dataset some column names has been changed. Structure and first 10 observation can be seen below.</p>
+<p>In this dataset some column names has been changed. Structure and first 10 observation can be seen below. Download <a href="https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/deprem_analiz.RData">R.Data</a> file to see the entire dataframe.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -324,55 +324,44 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mahalle_bazli_bina, <span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id   ilce_adi       mahalle_adi mahalle_kodu once_1980 ara_1980_2000
-1   1     ADALAR         BURGAZADA        40139       433           214
-2   2     ADALAR        HEYBELÝADA        40142       836           347
-3   3     ADALAR         KINALIADA        40143       610           244
-4   4     ADALAR             MADEN        40140       863           510
-5   5     ADALAR             NÝZAM        40141       842           426
-6   6 ARNAVUTKÖY    ADNAN MENDERES        40490         0           244
-7   7 ARNAVUTKÖY           ANADOLU        99359         0          1360
-8   8 ARNAVUTKÖY ARNAVUTKÖY MERKEZ        40478         0           685
-9   9 ARNAVUTKÖY           ATATÜRK        40482         0           565
-10 10 ARNAVUTKÖY           BAKLALI       191981         0           332
-   sonra_2000 ara_1_4_kat ara_5_9_kat ara_9_19_kat toplam_bina
-1         173         802          18            0         820
-2         212        1359          36            0        1395
-3         158         923          89            0        1012
-4         308        1637          44            0        1681
-5         217        1434          51            0        1485
-6         121         353          12            0         365
-7         845        1647         555            3        2205
-8         589         797         470            7        1274
-9         216         754          27            0         781
-10        184         515           1            0         516</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(mahalle_bazli_bina, <span class="at">file =</span> <span class="st">"mahalle_bazli_bina.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(mahalle_bazli_bina, <span class="at">file =</span> <span class="st">"mahalle_bazli_bina.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>A new column has been created to examine buildings in districts separately. You can see the first 10 district that have highest number of buildings.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mahalle_bazli_bina %&gt;% </span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#group_by(ilce_adi) %&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summarize(ilce_bazli_bina = sum(toplam_bina)) %&gt;%</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#arrange(ilce_bazli_bina) %&gt;% </span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#ggplot(aes(ilce_bazli_bina, fill = ilce_adi)) + geom_histogram(binwidth = 4000)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ilce_adi) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">ilce_bazli_bina =</span> <span class="fu">sum</span>(toplam_bina)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ilce_bazli_bina)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-</div></li>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   ilce_adi     ilce_bazli_bina
+   &lt;chr&gt;                  &lt;int&gt;
+ 1 ÜMRANÝYE               52612
+ 2 PENDÝK                 51491
+ 3 BEYKOZ                 51201
+ 4 SÝLÝVRÝ                50014
+ 5 SARIYER                49360
+ 6 FATÝH                  43560
+ 7 BAÐCILAR               42439
+ 8 ÜSKÜDAR                41731
+ 9 KÜÇÜKÇEKMECE           40136
+10 ESENYURT               38685</code></pre>
+</div>
+</div>
+<p>The dataset contains too much rows. Refer to <a href="https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/mahalle_bazli_bina.RData">R.Data</a> file.</p></li>
 <li><p><a href="https://data.ibb.gov.tr/tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24">Municipality Population in 2019</a></p>
 <p>Structure and first 10 observation can be seen below.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>nufus <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"belediye_nufuslar_2019.xlsx"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(nufus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>nufus <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"belediye_nufuslar_2019.xlsx"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(nufus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [39 × 2] (S3: tbl_df/tbl/data.frame)
@@ -381,7 +370,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nufus, <span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nufus, <span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 2
@@ -400,9 +389,10 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nufus, <span class="at">file =</span> <span class="st">"nufus.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nufus, <span class="at">file =</span> <span class="st">"nufus.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-</div></li>
+</div>
+<p>You can also download this dataset as <a href="https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/nufus.RData">R.Data</a> file.</p></li>
 </ol>
 
 
