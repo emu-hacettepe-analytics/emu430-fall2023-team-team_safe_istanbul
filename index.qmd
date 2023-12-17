@@ -11,37 +11,22 @@ Please stay tuned to follow our project activities.
 
 1.  [Ömer Faruk Çiftçi](https://emu-hacettepe-analytics.github.io/emu430-fall2023-omerfee/)
 
-2.  [Doğa Yağmur Deniz](link) - link eklenecek
+2.  [Doğa Yağmur Deniz](https://emu-hacettepe-analytics.github.io/emu430-fall2023-dogayagmurdeniz/)
 
-3.  [Muhammed Emre Erkan](link) - link eklenecek
+3.  [Muhammed Emre Erkan](https://emu-hacettepe-analytics.github.io/emu430-fall2023-memreerkan/)
 
-4.  [Cemil Neşe](link) - link eklenecek
+4.  [Cemil Neşe](https://emu-hacettepe-analytics.github.io/emu430-fall2023-cemilnese/)
 
-5.  [Ahmet Taha Karakaya](link) - link eklenecek
+5.  [Ahmet Taha Karakaya](https://emu-hacettepe-analytics.github.io/emu430-fall2023-tahakarakaya26/)
 
 # Project Topic
 
 We will utilize three datasets provided by the Istanbul Metropolitan Municipality.
 
-The first dataset, titled **"Earthquake Scenario Analysis Results"**, contains the outcomes of analyses
-conducted based on a 7.5 Mw nighttime earthquake scenario.
+The first dataset, titled **"Earthquake Scenario Analysis Results"**, contains the outcomes of analyses conducted based on a 7.5 Mw nighttime earthquake scenario.
 
-The second dataset, **"Neighborhood-Based Building Numbers in 2017"**, comprises information on the number of
-buildings in Istanbul's neighborhoods. These buildings are categorized by their construction year
-and the number of floors.
+The second dataset, **"Neighborhood-Based Building Numbers in 2017"**, comprises information on the number of buildings in Istanbul's neighborhoods. These buildings are categorized by their construction year and the number of floors.
 
 The third dataset is **"Municipality Population in 2019"**, contains population of Istanbul by districts in 2019.
 
-Our objective is to compile a comprehensive report and identify the districts in Istanbul
-that are most susceptible to potential earthquakes. We aim to create an ordered priority list for
-neighborhoods and develop a risk map for Istanbul, taking geographical coordinates into account.
-
-# Data Set
-
-1.  [Earthquake Scenario Analysis Results](https://data.ibb.gov.tr/tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193)
-
-2.  [Neighborhood-Based Building Numbers in 2017](https://data.ibb.gov.tr/tr/dataset/mahalle-bazli-bina-analiz-verisi/resource/cef193d5-0bd2-4e8d-8a69-275c50288875)
-
-3.  [Municipality Population in 2019](https://data.ibb.gov.tr/tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24)
-
-
+Our objective is to compile a comprehensive report and identify the districts in Istanbul that are most susceptible to potential earthquakes. We aim to create an ordered priority list for neighborhoods and develop a risk map for Istanbul, taking geographical coordinates into account.

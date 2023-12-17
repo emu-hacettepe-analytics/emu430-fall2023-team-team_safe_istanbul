@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>xxx’ Project Lab - Data</title>
+<title>Team Safe Istanbul’s Project Lab - Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -57,7 +91,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -73,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">xxx’ Project Lab</span>
+    <span class="navbar-title">Team Safe Istanbul’s Project Lab</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -96,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
-    <a href="https://twitter.com" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/orgs/emu-hacettepe-analytics/teams/team_safe_istanbul" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
@@ -107,7 +142,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-sets" id="toc-data-sets" class="nav-link active" data-scroll-target="#data-sets">Data Sets</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
@@ -133,9 +174,199 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Data source: <a href="data.ibb.gov.tr">Istanbul Metropolitan Municipality</a></p>
+<p>Datasets shown below downloaded from <a href="data.ibb.gov.tr">Istanbul Metropolitan Municipality</a> website as csv and xlsx files. Separate links are also provided.</p>
+<section id="data-sets" class="level1">
+<h1>Data Sets</h1>
+<ol type="1">
+<li><p><a href="https://data.ibb.gov.tr/tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193">Earthquake Scenario Analysis Results</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>deprem_analiz <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Deprem_senaryosu_analiz_sonuçlar.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(deprem_analiz)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"ilce_adi"</span>, <span class="st">"mahalle_adi"</span>, <span class="st">"mahalle_kodu"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(deprem_analiz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   959 obs. of  16 variables:
+ $ id                          : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ ilce_adi                    : chr  "ADALAR" "ADALAR" "ADALAR" "ADALAR" ...
+ $ mahalle_adi                 : chr  "BURGAZADA" "HEYBELÝADA" "KINALIADA" "MADEN" ...
+ $ mahalle_kodu                : int  40139 40142 40143 40140 40141 40490 99359 40478 40482 191981 ...
+ $ cok_agir_hasarli_bina_sayisi: int  54 101 53 104 101 1 2 1 1 1 ...
+ $ agir_hasarli_bina_sayisi    : int  99 175 97 192 180 3 13 6 6 5 ...
+ $ orta_hasarli_bina_sayisi    : int  256 423 287 483 445 21 108 51 49 23 ...
+ $ hafif_hasarli_bina_sayisi   : int  241 393 302 484 422 57 371 199 129 65 ...
+ $ can_kaybi_sayisi            : int  8 25 5 22 16 0 0 0 0 0 ...
+ $ agir_yarali_sayisi          : int  6 21 3 18 13 0 0 0 0 0 ...
+ $ hastanede_tedavi_sayisi     : int  24 66 15 64 48 1 8 2 2 0 ...
+ $ hafif_yarali_sayisi         : int  42 113 27 113 83 3 26 10 8 0 ...
+ $ dogalgaz_boru_hasari        : int  0 1 0 1 1 0 1 0 0 0 ...
+ $ icme_suyu_boru_hasari       : int  0 1 1 1 2 0 1 1 0 0 ...
+ $ atik_su_boru_hasari         : int  1 2 1 2 2 0 1 1 0 0 ...
+ $ gecici_barinma              : int  398 763 420 847 687 89 659 273 209 26 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(deprem_analiz, <span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id   ilce_adi       mahalle_adi mahalle_kodu cok_agir_hasarli_bina_sayisi
+1   1     ADALAR         BURGAZADA        40139                           54
+2   2     ADALAR        HEYBELÝADA        40142                          101
+3   3     ADALAR         KINALIADA        40143                           53
+4   4     ADALAR             MADEN        40140                          104
+5   5     ADALAR             NÝZAM        40141                          101
+6   6 ARNAVUTKÖY    ADNAN MENDERES        40490                            1
+7   7 ARNAVUTKÖY           ANADOLU        99359                            2
+8   8 ARNAVUTKÖY ARNAVUTKÖY MERKEZ        40478                            1
+9   9 ARNAVUTKÖY           ATATÜRK        40482                            1
+10 10 ARNAVUTKÖY           BAKLALI       191981                            1
+   agir_hasarli_bina_sayisi orta_hasarli_bina_sayisi hafif_hasarli_bina_sayisi
+1                        99                      256                       241
+2                       175                      423                       393
+3                        97                      287                       302
+4                       192                      483                       484
+5                       180                      445                       422
+6                         3                       21                        57
+7                        13                      108                       371
+8                         6                       51                       199
+9                         6                       49                       129
+10                        5                       23                        65
+   can_kaybi_sayisi agir_yarali_sayisi hastanede_tedavi_sayisi
+1                 8                  6                      24
+2                25                 21                      66
+3                 5                  3                      15
+4                22                 18                      64
+5                16                 13                      48
+6                 0                  0                       1
+7                 0                  0                       8
+8                 0                  0                       2
+9                 0                  0                       2
+10                0                  0                       0
+   hafif_yarali_sayisi dogalgaz_boru_hasari icme_suyu_boru_hasari
+1                   42                    0                     0
+2                  113                    1                     1
+3                   27                    0                     1
+4                  113                    1                     1
+5                   83                    1                     2
+6                    3                    0                     0
+7                   26                    1                     1
+8                   10                    0                     1
+9                    8                    0                     0
+10                   0                    0                     0
+   atik_su_boru_hasari gecici_barinma
+1                    1            398
+2                    2            763
+3                    1            420
+4                    2            847
+5                    2            687
+6                    0             89
+7                    1            659
+8                    1            273
+9                    0            209
+10                   0             26</code></pre>
+</div>
+</div></li>
+<li><p><a href="https://data.ibb.gov.tr/tr/dataset/mahalle-bazli-bina-analiz-verisi/resource/cef193d5-0bd2-4e8d-8a69-275c50288875">Neighborhood-Based Building Numbers in 2017</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ stringr   1.5.0
+✔ forcats   1.0.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"mahalle_bazli_bina_2017.csv"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mahalle_bazli_bina) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"ilce_adi"</span>, <span class="st">"mahalle_adi"</span>, <span class="st">"mahalle_kodu"</span>, <span class="st">"once_1980"</span>, <span class="st">"ara_1980_2000"</span>, <span class="st">"sonra_2000"</span>, <span class="st">"ara_1_4_kat"</span>, <span class="st">"ara_5_9_kat"</span>, <span class="st">"ara_9_19_kat"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>toplam_bina <span class="ot">&lt;-</span> mahalle_bazli_bina <span class="sc">%&gt;%</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ara_1_4_kat,ara_5_9_kat,ara_9_19_kat) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>( (.) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">toplam_bina =</span> <span class="fu">sum</span>(.))) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(toplam_bina)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="ot">&lt;-</span> <span class="fu">cbind</span>(mahalle_bazli_bina, toplam_bina)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mahalle_bazli_bina)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   959 obs. of  11 variables:
+ $ id           : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ ilce_adi     : chr  "ADALAR" "ADALAR" "ADALAR" "ADALAR" ...
+ $ mahalle_adi  : chr  "BURGAZADA" "HEYBELÝADA" "KINALIADA" "MADEN" ...
+ $ mahalle_kodu : int  40139 40142 40143 40140 40141 40490 99359 40478 40482 191981 ...
+ $ once_1980    : int  433 836 610 863 842 0 0 0 0 0 ...
+ $ ara_1980_2000: int  214 347 244 510 426 244 1360 685 565 332 ...
+ $ sonra_2000   : int  173 212 158 308 217 121 845 589 216 184 ...
+ $ ara_1_4_kat  : int  802 1359 923 1637 1434 353 1647 797 754 515 ...
+ $ ara_5_9_kat  : int  18 36 89 44 51 12 555 470 27 1 ...
+ $ ara_9_19_kat : int  0 0 0 0 0 0 3 7 0 0 ...
+ $ toplam_bina  : int  820 1395 1012 1681 1485 365 2205 1274 781 516 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mahalle_bazli_bina, <span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   id   ilce_adi       mahalle_adi mahalle_kodu once_1980 ara_1980_2000
+1   1     ADALAR         BURGAZADA        40139       433           214
+2   2     ADALAR        HEYBELÝADA        40142       836           347
+3   3     ADALAR         KINALIADA        40143       610           244
+4   4     ADALAR             MADEN        40140       863           510
+5   5     ADALAR             NÝZAM        40141       842           426
+6   6 ARNAVUTKÖY    ADNAN MENDERES        40490         0           244
+7   7 ARNAVUTKÖY           ANADOLU        99359         0          1360
+8   8 ARNAVUTKÖY ARNAVUTKÖY MERKEZ        40478         0           685
+9   9 ARNAVUTKÖY           ATATÜRK        40482         0           565
+10 10 ARNAVUTKÖY           BAKLALI       191981         0           332
+   sonra_2000 ara_1_4_kat ara_5_9_kat ara_9_19_kat toplam_bina
+1         173         802          18            0         820
+2         212        1359          36            0        1395
+3         158         923          89            0        1012
+4         308        1637          44            0        1681
+5         217        1434          51            0        1485
+6         121         353          12            0         365
+7         845        1647         555            3        2205
+8         589         797         470            7        1274
+9         216         754          27            0         781
+10        184         515           1            0         516</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mahalle_bazli_bina %&gt;% </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#group_by(ilce_adi) %&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#summarize(ilce_bazli_bina = sum(toplam_bina)) %&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#arrange(ilce_bazli_bina) %&gt;% </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#ggplot(aes(ilce_bazli_bina, fill = ilce_adi)) + geom_histogram(binwidth = 4000)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><a href="https://data.ibb.gov.tr/tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24">Municipality Population in 2019</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>nufus <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"belediye_nufuslar_2019.xlsx"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(nufus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [39 × 2] (S3: tbl_df/tbl/data.frame)
+ $ Belediyeler        : chr [1:39] "Adalar Belediyesi" "Arnavutköy Belediyesi" "Ataşehir Belediyesi" "Avcılar Belediyesi" ...
+ $ 2019 yılı nüfusları: num [1:39] 15238 282488 425094 448882 745125 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nufus, <span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   Belediyeler             `2019 yılı nüfusları`
+   &lt;chr&gt;                                   &lt;dbl&gt;
+ 1 Adalar Belediyesi                       15238
+ 2 Arnavutköy Belediyesi                  282488
+ 3 Ataşehir Belediyesi                    425094
+ 4 Avcılar Belediyesi                     448882
+ 5 Bağcılar Belediyesi                    745125
+ 6 Bahçelievler Belediyesi                611059
+ 7 Bakırköy Belediyesi                    229239
+ 8 Başakşehir Belediyesi                  460259
+ 9 Bayrampaşa Belediyesi                  274735
+10 Beşiktaş Belediyesi                    182649</code></pre>
+</div>
+</div></li>
+</ol>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
