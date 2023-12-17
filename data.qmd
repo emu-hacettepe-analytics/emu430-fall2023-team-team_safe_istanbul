@@ -1,5 +1,10 @@
 ---
 title: "Data"
+
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
 ---
 
 Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.ibb.gov.tr) website as csv and xlsx files. Separate links are also provided.
@@ -20,16 +25,7 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
 
 2.  [Neighborhood-Based Building Numbers in 2017](https://data.ibb.gov.tr/tr/dataset/mahalle-bazli-bina-analiz-verisi/resource/cef193d5-0bd2-4e8d-8a69-275c50288875)
 
-    ---
-    format:
-      html:
-        code-fold: true
-        code-summary: "Show the code"
-    ---
-
-    ```{r class.source = "fold-hide"}
-    library(ggplot2)
-    library(tidyverse)
+    ```{r}
     library(dplyr)
     library(readr)
     mahalle_bazli_bina <- read.csv("mahalle_bazli_bina_2017.csv")
