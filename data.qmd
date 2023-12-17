@@ -27,6 +27,9 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
 
     ```{r}
     library(dplyr)
+    ```
+
+    ```{r}
     library(readr)
     mahalle_bazli_bina <- read.csv("mahalle_bazli_bina_2017.csv")
     colnames(mahalle_bazli_bina) <- c("id", "ilce_adi", "mahalle_adi", "mahalle_kodu", "once_1980", "ara_1980_2000", "sonra_2000", "ara_1_4_kat", "ara_5_9_kat", "ara_9_19_kat")
