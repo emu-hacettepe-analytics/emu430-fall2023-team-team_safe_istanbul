@@ -13,6 +13,8 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
 
 1.  [Earthquake Scenario Analysis Results](https://data.ibb.gov.tr/tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193)
 
+    In this dataset some column names has been changed. Structure and first 10 observation can be seen below.
+
     ```{r}
 
     library(readr)
@@ -20,10 +22,12 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
     colnames(deprem_analiz)[1:4] <- c("id", "ilce_adi", "mahalle_adi", "mahalle_kodu")
     str(deprem_analiz)
     head(deprem_analiz, n = 10L)
-
+    save(deprem_analiz, file = "deprem_analiz.RData")
     ```
 
 2.  [Neighborhood-Based Building Numbers in 2017](https://data.ibb.gov.tr/tr/dataset/mahalle-bazli-bina-analiz-verisi/resource/cef193d5-0bd2-4e8d-8a69-275c50288875)
+
+    **toplam_bina** column is calculated and added to the last. Also, some colum names has been changed.
 
     ```{r}
     library(readr)
@@ -39,6 +43,7 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
     mahalle_bazli_bina <- cbind(mahalle_bazli_bina, toplam_bina)
     str(mahalle_bazli_bina)
     head(mahalle_bazli_bina, n = 10L)
+    save(mahalle_bazli_bina, file = "mahalle_bazli_bina.RData")
     ```
 
     ```{r}
@@ -56,11 +61,13 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
 
 3.  [Municipality Population in 2019](https://data.ibb.gov.tr/tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24)
 
+    Structure and first 10 observation can be seen below.
+
     ```{r}
 
     library(readxl)
     nufus <- read_excel("belediye_nufuslar_2019.xlsx")
     str(nufus)
     head(nufus, n = 10L)
-
+    save(nufus, file = "nufus.RData")
     ```
