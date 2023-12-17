@@ -383,12 +383,13 @@ Attaching package: 'dplyr'</code></pre>
 <p><img src="data_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p><strong>The plot shown above shows us total loss vs total number of buildings.</strong></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>vis2 <span class="ot">&lt;-</span> deprem_analiz <span class="sc">%&gt;%</span> </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(mahalle_bazli_bina, <span class="at">by =</span> <span class="st">"id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ilce_adi.x,once_1980, ara_1980_2000, sonra_2000, toplam_bina, can_kaybi_sayisi) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ilce_adi.x,once_1980, ara_1980_2000, sonra_2000, toplam_bina, can_kaybi_sayisi,toplam_bina) <span class="sc">%&gt;%</span> </span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ilce_adi.x) <span class="sc">%&gt;%</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">toplam_once_1980 =</span> <span class="fu">sum</span>(once_1980), <span class="at">toplam_ara_1980_2000 =</span> <span class="fu">sum</span>(ara_1980_2000), <span class="at">toplam_sonra_2000 =</span> <span class="fu">sum</span>(sonra_2000))</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -408,7 +409,9 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell-output-display">
 <p><img src="data_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
-</div></li>
+</div>
+<p><strong>This plot shows us total building for each time zone vs district.</strong></p>
+<p>Note: blue –&gt; before 1980, green –&gt; between 1980 - 2000, red –&gt; after 2000.</p></li>
 </ol>
 
 
