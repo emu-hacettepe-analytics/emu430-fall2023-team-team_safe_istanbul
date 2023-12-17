@@ -42,7 +42,6 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
     mahalle_bazli_bina <- cbind(mahalle_bazli_bina, toplam_bina)
     str(mahalle_bazli_bina)
     head(mahalle_bazli_bina, n = 10L)
-    save(mahalle_bazli_bina, file = "mahalle_bazli_bina.RData")
     ```
 
     A new column has been created to examine buildings in districts separately. You can see the first 10 district that have highest number of buildings.
@@ -55,7 +54,11 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
       head(n = 10L)
     ```
 
-    The dataset contains too much rows. Refer to [R.Data](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/mahalle_bazli_bina.RData) file.
+    ```{r}
+    save(mahalle_bazli_bina, file = "mahalle_bazli_bina.RData")
+    ```
+
+    Refer to [R.Data](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/mahalle_bazli_bina.RData) file.
 
 3.  [Municipality Population in 2019](https://data.ibb.gov.tr/tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24)
 
