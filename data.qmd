@@ -21,7 +21,6 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
     deprem_analiz <- read.csv("Deprem_senaryosu_analiz_sonuçlar.csv")
     colnames(deprem_analiz)[1:4] <- c("id", "ilce_adi", "mahalle_adi", "mahalle_kodu")
     str(deprem_analiz)
-    head(deprem_analiz, n = 10L)
     save(deprem_analiz, file = "deprem_analiz.RData")
     ```
 
@@ -42,6 +41,7 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
       select(toplam_bina)
     mahalle_bazli_bina <- cbind(mahalle_bazli_bina, toplam_bina)
     str(mahalle_bazli_bina)
+    head(mahalle_bazli_bina, n = 10L)
     save(mahalle_bazli_bina, file = "mahalle_bazli_bina.RData")
     ```
 
