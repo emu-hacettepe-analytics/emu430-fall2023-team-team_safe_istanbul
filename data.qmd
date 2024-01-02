@@ -89,11 +89,13 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
       
     ```
 
+    **The plot shown above shows us total loss vs total number of buildings.**
+
     ```{r}
 
     vis2 <- deprem_analiz %>% 
       inner_join(mahalle_bazli_bina, by = "id") %>%
-      select(ilce_adi.x,once_1980, ara_1980_2000, sonra_2000, toplam_bina, can_kaybi_sayisi) %>% 
+      select(ilce_adi.x,once_1980, ara_1980_2000, sonra_2000, toplam_bina, can_kaybi_sayisi,toplam_bina) %>% 
       group_by(ilce_adi.x) %>%
       summarize(toplam_once_1980 = sum(once_1980), toplam_ara_1980_2000 = sum(ara_1980_2000), toplam_sonra_2000 = sum(sonra_2000))
 
@@ -110,3 +112,7 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
       theme(axis.text.x=element_text(angle=90,hjust=1,vjust=0.5))+
       guides(fill = guide_legend(title = "Zaman Aralığı"))
     ```
+
+    **This plot shows us total building for each time zone vs district.**
+
+    Note: blue --\> before 1980, green --\> between 1980 - 2000, red --\> after 2000.
