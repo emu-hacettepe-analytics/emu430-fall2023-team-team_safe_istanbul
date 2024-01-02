@@ -1,5 +1,79 @@
 ---
 title: "Analysis - Team Safe Istanbul"
----
 
-Stay tuned to follow our latest updates.
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+---
+## Analysis of "Eartquake Analysis and Results Data"
+
+
+```{r, message=FALSE}
+    library(dplyr)
+    library(readr)
+    library(knitr)
+    library(ggplot2)
+    
+    deprem_analiz <- read.csv("Deprem_senaryosu_analiz_sonuçlar.csv")
+    colnames(deprem_analiz)[1:4] <- c("id", "ilce_adi", "mahalle_adi", "mahalle_kodu")
+    district_sum <- deprem_analiz %>% group_by(ilce_adi) %>% summarise(
+                                                                  total_cok_agir_hasarli = sum(cok_agir_hasarli_bina_sayisi),
+                                                                  total_agir_hasarli = sum(agir_hasarli_bina_sayisi),
+                                                                  total_orta_hasarli = sum(orta_hasarli_bina_sayisi),
+                                                                  total_hafif_hasarli = sum(hafif_hasarli_bina_sayisi),
+                                                                  total_can_kaybi = sum(can_kaybi_sayisi),
+                                                                  total_agir_yarali = sum(agir_yarali_sayisi),
+                                                                  total_hafif_yarali = sum(hafif_yarali_sayisi),
+                                                                  .groups = 'drop')
+    
+    district_avg <- deprem_analiz %>% group_by(ilce_adi) %>% summarise(
+                                                                  avg_cok_agir_hasarli = mean(cok_agir_hasarli_bina_sayisi),
+                                                                  avg_agir_hasarli = mean(agir_hasarli_bina_sayisi),
+                                                                  avg_orta_hasarli = mean(orta_hasarli_bina_sayisi),
+                                                                  avg_hafif_hasarli = mean(hafif_hasarli_bina_sayisi),
+                                                                  avg_can_kaybi = mean(can_kaybi_sayisi),
+                                                                  avg_agir_yarali = mean(agir_yarali_sayisi),
+                                                                  avg_hafif_yarali = mean(hafif_yarali_sayisi),
+                                                                 .groups = 'drop')
+    district_avg$ilce_adi <- factor(district_avg$ilce_adi, levels = unique(district_avg$ilce_adi))
+    
+    building_avg_line <- ggplot(district_avg, aes(x = ilce_adi)) +
+                geom_line(aes(y = avg_cok_agir_hasarli, group = 1, color = "Çok Ağır Hasarlı")) +
+                geom_line(aes(y = avg_agir_hasarli, group = 1, color = "Ağır Hasarlı")) +
+                geom_line(aes(y = avg_orta_hasarli, group = 1, color = "Orta Hasarlı")) +
+                geom_line(aes(y = avg_hafif_hasarli, group = 1, color = "Hafif Hasarlı")) +
+                ylab("Ortalama Bina Sayısı") +
+                xlab("İlçe Adı") +
+                ggtitle("Deprem Hasar Analizi İlçe Bazında Ortalamalar (Line Chart)") +
+                theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+                scale_color_manual(values = c("Çok Ağır Hasarlı" = "red", "Ağır Hasarlı" = "orange", 
+                                              "Orta Hasarlı" = "blue", "Hafif Hasarlı" = "black"))
+  
+    building_avg_bar <- ggplot(district_avg, aes(x = ilce_adi)) +
+                geom_bar(aes(y = avg_hafif_hasarli), fill = "black", position = "dodge", stat = "identity") +
+                geom_bar(aes(y = avg_orta_hasarli), fill = "blue", position = "dodge", stat = "identity") +
+                geom_bar(aes(y = avg_agir_hasarli), fill = "orange", position = "dodge", stat = "identity") +
+                geom_bar(aes(y = avg_cok_agir_hasarli), fill = "red", position = "dodge", stat = "identity") +
+                ylab("Ortalama Bina Sayısı") +
+                xlab("İlçe Adı") +
+                ggtitle("Deprem Hasar Analizi İlçe Bazında Ortalamalar")+
+                theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+    avg_health <- ggplot(district_avg, aes(x = ilce_adi)) +
+                geom_line(aes(y = avg_can_kaybi, group = 1, color = "Can Kaybı")) +
+                geom_line(aes(y = avg_agir_yarali, group = 1, color = "Ağır Yaralı")) +
+                geom_line(aes(y = avg_hafif_yarali, group = 1, color = "Hafif Yaralı")) +
+                ylab("Yaralanma ve Can Kaybi") +
+                xlab("İlçe Adı") +
+                ggtitle("Deprem Hasar Analizi İlçe Bazında Ortalamalar (Line Chart)") +
+                theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+                scale_color_manual(values = c("Can Kaybı" = "black", "Ağır Yaralı" = "red", 
+                                              "Hafif Yaralı" = "blue"))
+
+    
+    
+    
+    
+    
+```

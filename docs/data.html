@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,8 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -131,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
-    <a href="https://github.com/orgs/emu-hacettepe-analytics/teams/team_safe_istanbul" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/orgs/emu-hacettepe-analytics/teams/team_safe_istanbul" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
@@ -182,11 +181,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this dataset some column names has been changed. Structure and first 10 observation can be seen below. Download <a href="https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/deprem_analiz.RData">R.Data</a> file to see the entire dataframe.</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>deprem_analiz <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Deprem_senaryosu_analiz_sonuçlar.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(deprem_analiz)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"ilce_adi"</span>, <span class="st">"mahalle_adi"</span>, <span class="st">"mahalle_kodu"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(deprem_analiz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>deprem_analiz <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Deprem_senaryosu_analiz_sonuçlar.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(deprem_analiz)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"ilce_adi"</span>, <span class="st">"mahalle_adi"</span>, <span class="st">"mahalle_kodu"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">str</span>(deprem_analiz), <span class="at">caption=</span><span class="st">"Structure of deprem_analiz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   959 obs. of  16 variables:
@@ -207,8 +208,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  $ atik_su_boru_hasari         : int  1 2 1 2 2 0 1 1 0 0 ...
  $ gecici_barinma              : int  398 763 420 847 687 89 659 273 209 26 ...</code></pre>
 </div>
+<div class="cell-output-display">
+<p>Table: Structure of deprem_analiz</p>
+</div>
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(deprem_analiz, <span class="at">file =</span> <span class="st">"deprem_analiz.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div></li>
@@ -216,36 +220,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>toplam_bina</strong> column is calculated and added to the last. Also, some colum names has been changed.</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"mahalle_bazli_bina_2017.csv"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mahalle_bazli_bina) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"ilce_adi"</span>, <span class="st">"mahalle_adi"</span>, <span class="st">"mahalle_kodu"</span>, <span class="st">"once_1980"</span>, <span class="st">"ara_1980_2000"</span>, <span class="st">"sonra_2000"</span>, <span class="st">"ara_1_4_kat"</span>, <span class="st">"ara_5_9_kat"</span>, <span class="st">"ara_9_19_kat"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>toplam_bina <span class="ot">&lt;-</span> mahalle_bazli_bina <span class="sc">%&gt;%</span> </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ara_1_4_kat,ara_5_9_kat,ara_9_19_kat) <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>( (.) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">toplam_bina =</span> <span class="fu">sum</span>(.))) <span class="sc">%&gt;%</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(toplam_bina)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="ot">&lt;-</span> <span class="fu">cbind</span>(mahalle_bazli_bina, toplam_bina)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mahalle_bazli_bina)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"mahalle_bazli_bina_2017.csv"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mahalle_bazli_bina) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"ilce_adi"</span>, <span class="st">"mahalle_adi"</span>, <span class="st">"mahalle_kodu"</span>, <span class="st">"once_1980"</span>, <span class="st">"ara_1980_2000"</span>, <span class="st">"sonra_2000"</span>, <span class="st">"ara_1_4_kat"</span>, <span class="st">"ara_5_9_kat"</span>, <span class="st">"ara_9_19_kat"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>toplam_bina <span class="ot">&lt;-</span> mahalle_bazli_bina <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ara_1_4_kat,ara_5_9_kat,ara_9_19_kat) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>( (.) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">toplam_bina =</span> <span class="fu">sum</span>(.))) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(toplam_bina)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="ot">&lt;-</span> <span class="fu">cbind</span>(mahalle_bazli_bina, toplam_bina)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mahalle_bazli_bina)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   959 obs. of  11 variables:
@@ -262,64 +247,242 @@ Attaching package: 'dplyr'</code></pre>
  $ toplam_bina  : int  820 1395 1012 1681 1485 365 2205 1274 781 516 ...</code></pre>
 </div>
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mahalle_bazli_bina, <span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(mahalle_bazli_bina, <span class="at">n =</span> 10L), <span class="at">caption=</span><span class="st">"Head of Mahalle Bazlı Bina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id   ilce_adi       mahalle_adi mahalle_kodu once_1980 ara_1980_2000
-1   1     ADALAR         BURGAZADA        40139       433           214
-2   2     ADALAR        HEYBELÝADA        40142       836           347
-3   3     ADALAR         KINALIADA        40143       610           244
-4   4     ADALAR             MADEN        40140       863           510
-5   5     ADALAR             NÝZAM        40141       842           426
-6   6 ARNAVUTKÖY    ADNAN MENDERES        40490         0           244
-7   7 ARNAVUTKÖY           ANADOLU        99359         0          1360
-8   8 ARNAVUTKÖY ARNAVUTKÖY MERKEZ        40478         0           685
-9   9 ARNAVUTKÖY           ATATÜRK        40482         0           565
-10 10 ARNAVUTKÖY           BAKLALI       191981         0           332
-   sonra_2000 ara_1_4_kat ara_5_9_kat ara_9_19_kat toplam_bina
-1         173         802          18            0         820
-2         212        1359          36            0        1395
-3         158         923          89            0        1012
-4         308        1637          44            0        1681
-5         217        1434          51            0        1485
-6         121         353          12            0         365
-7         845        1647         555            3        2205
-8         589         797         470            7        1274
-9         216         754          27            0         781
-10        184         515           1            0         516</code></pre>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Head of Mahalle Bazlı Bina</caption>
+<colgroup>
+<col style="width: 2%">
+<col style="width: 8%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: left;">ilce_adi</th>
+<th style="text-align: left;">mahalle_adi</th>
+<th style="text-align: right;">mahalle_kodu</th>
+<th style="text-align: right;">once_1980</th>
+<th style="text-align: right;">ara_1980_2000</th>
+<th style="text-align: right;">sonra_2000</th>
+<th style="text-align: right;">ara_1_4_kat</th>
+<th style="text-align: right;">ara_5_9_kat</th>
+<th style="text-align: right;">ara_9_19_kat</th>
+<th style="text-align: right;">toplam_bina</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">ADALAR</td>
+<td style="text-align: left;">BURGAZADA</td>
+<td style="text-align: right;">40139</td>
+<td style="text-align: right;">433</td>
+<td style="text-align: right;">214</td>
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">802</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">820</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">ADALAR</td>
+<td style="text-align: left;">HEYBELÝADA</td>
+<td style="text-align: right;">40142</td>
+<td style="text-align: right;">836</td>
+<td style="text-align: right;">347</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: right;">1359</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1395</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">ADALAR</td>
+<td style="text-align: left;">KINALIADA</td>
+<td style="text-align: right;">40143</td>
+<td style="text-align: right;">610</td>
+<td style="text-align: right;">244</td>
+<td style="text-align: right;">158</td>
+<td style="text-align: right;">923</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1012</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">ADALAR</td>
+<td style="text-align: left;">MADEN</td>
+<td style="text-align: right;">40140</td>
+<td style="text-align: right;">863</td>
+<td style="text-align: right;">510</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">1637</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1681</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">ADALAR</td>
+<td style="text-align: left;">NÝZAM</td>
+<td style="text-align: right;">40141</td>
+<td style="text-align: right;">842</td>
+<td style="text-align: right;">426</td>
+<td style="text-align: right;">217</td>
+<td style="text-align: right;">1434</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1485</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
+<td style="text-align: left;">ADNAN MENDERES</td>
+<td style="text-align: right;">40490</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">244</td>
+<td style="text-align: right;">121</td>
+<td style="text-align: right;">353</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">365</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
+<td style="text-align: left;">ANADOLU</td>
+<td style="text-align: right;">99359</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1360</td>
+<td style="text-align: right;">845</td>
+<td style="text-align: right;">1647</td>
+<td style="text-align: right;">555</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2205</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
+<td style="text-align: left;">ARNAVUTKÖY MERKEZ</td>
+<td style="text-align: right;">40478</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">685</td>
+<td style="text-align: right;">589</td>
+<td style="text-align: right;">797</td>
+<td style="text-align: right;">470</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1274</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
+<td style="text-align: left;">ATATÜRK</td>
+<td style="text-align: right;">40482</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">565</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: right;">754</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">781</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
+<td style="text-align: left;">BAKLALI</td>
+<td style="text-align: right;">191981</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">332</td>
+<td style="text-align: right;">184</td>
+<td style="text-align: right;">515</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">516</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>A new column has been created to examine buildings in districts separately. You can see the first 10 district that have highest number of buildings.</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ilce_adi) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">ilce_bazli_bina =</span> <span class="fu">sum</span>(toplam_bina)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ilce_bazli_bina)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(mahalle_bazli_bina <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ilce_adi) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">ilce_bazli_bina =</span> <span class="fu">sum</span>(toplam_bina)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ilce_bazli_bina)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> 10L))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 2
-   ilce_adi     ilce_bazli_bina
-   &lt;chr&gt;                  &lt;int&gt;
- 1 ÜMRANÝYE               52612
- 2 PENDÝK                 51491
- 3 BEYKOZ                 51201
- 4 SÝLÝVRÝ                50014
- 5 SARIYER                49360
- 6 FATÝH                  43560
- 7 BAÐCILAR               42439
- 8 ÜSKÜDAR                41731
- 9 KÜÇÜKÇEKMECE           40136
-10 ESENYURT               38685</code></pre>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">ilce_adi</th>
+<th style="text-align: right;">ilce_bazli_bina</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ÜMRANÝYE</td>
+<td style="text-align: right;">52612</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PENDÝK</td>
+<td style="text-align: right;">51491</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BEYKOZ</td>
+<td style="text-align: right;">51201</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SÝLÝVRÝ</td>
+<td style="text-align: right;">50014</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SARIYER</td>
+<td style="text-align: right;">49360</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FATÝH</td>
+<td style="text-align: right;">43560</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BAÐCILAR</td>
+<td style="text-align: right;">42439</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ÜSKÜDAR</td>
+<td style="text-align: right;">41731</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">KÜÇÜKÇEKMECE</td>
+<td style="text-align: right;">40136</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ESENYURT</td>
+<td style="text-align: right;">38685</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="cell">
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(mahalle_bazli_bina, <span class="at">file =</span> <span class="st">"mahalle_bazli_bina.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(mahalle_bazli_bina, <span class="at">file =</span> <span class="st">"mahalle_bazli_bina.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Refer to <a href="https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/mahalle_bazli_bina.RData">R.Data</a> file.</p></li>
@@ -327,10 +490,10 @@ Attaching package: 'dplyr'</code></pre>
 <p>Structure and first 10 observation can be seen below.</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>nufus <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"belediye_nufuslar_2019.xlsx"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(nufus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>nufus <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"belediye_nufuslar_2019.xlsx"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(nufus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [39 × 2] (S3: tbl_df/tbl/data.frame)
@@ -338,8 +501,8 @@ Attaching package: 'dplyr'</code></pre>
  $ 2019 yılı nüfusları: num [1:39] 15238 282488 425094 448882 745125 ...</code></pre>
 </div>
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nufus, <span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nufus, <span class="at">n =</span> 10L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 2
@@ -357,24 +520,24 @@ Attaching package: 'dplyr'</code></pre>
 10 Beşiktaş Belediyesi                    182649</code></pre>
 </div>
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nufus, <span class="at">file =</span> <span class="st">"nufus.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(nufus, <span class="at">file =</span> <span class="st">"nufus.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>You can also download this dataset as <a href="https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/nufus.RData">R.Data</a> file.</p>
 <p><strong>An Overview</strong></p>
 <div class="cell">
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>vis <span class="ot">&lt;-</span> deprem_analiz <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(mahalle_bazli_bina, <span class="at">by =</span> <span class="st">"id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ilce_adi.x, ara_1_4_kat, ara_5_9_kat, ara_9_19_kat, toplam_bina, can_kaybi_sayisi) </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>vis <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> toplam_bina, <span class="at">y =</span> can_kaybi_sayisi, <span class="at">color =</span> ilce_adi.x )) <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="fu">log10</span>(<span class="dv">10</span>)<span class="sc">/</span><span class="fu">log10</span>(<span class="dv">100</span>),<span class="at">intercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()<span class="sc">+</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()<span class="sc">+</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>vis <span class="ot">&lt;-</span> deprem_analiz <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(mahalle_bazli_bina, <span class="at">by =</span> <span class="st">"id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ilce_adi.x, ara_1_4_kat, ara_5_9_kat, ara_9_19_kat, toplam_bina, can_kaybi_sayisi) </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>vis <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> toplam_bina, <span class="at">y =</span> can_kaybi_sayisi, <span class="at">color =</span> ilce_adi.x )) <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="fu">log10</span>(<span class="dv">10</span>)<span class="sc">/</span><span class="fu">log10</span>(<span class="dv">100</span>),<span class="at">intercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>()<span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()<span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Transformation introduced infinite values in continuous y-axis</code></pre>
@@ -385,25 +548,25 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="cell">
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>vis2 <span class="ot">&lt;-</span> deprem_analiz <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(mahalle_bazli_bina, <span class="at">by =</span> <span class="st">"id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ilce_adi.x,once_1980, ara_1980_2000, sonra_2000, toplam_bina, can_kaybi_sayisi) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ilce_adi.x) <span class="sc">%&gt;%</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">toplam_once_1980 =</span> <span class="fu">sum</span>(once_1980), <span class="at">toplam_ara_1980_2000 =</span> <span class="fu">sum</span>(ara_1980_2000), <span class="at">toplam_sonra_2000 =</span> <span class="fu">sum</span>(sonra_2000))</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar chart çizimi</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(vis2, <span class="fu">aes</span>(<span class="at">x =</span> ilce_adi.x)) <span class="sc">+</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> toplam_once_1980), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> toplam_ara_1980_2000), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"green"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> toplam_sonra_2000), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Toplam Değerler - İlçelere Göre"</span>, <span class="at">x =</span> <span class="st">"İlçe Adı"</span>, <span class="at">y =</span> <span class="st">"Toplam Değer"</span>) <span class="sc">+</span></span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Once 1980"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"Ara 1980-2000"</span> <span class="ot">=</span> <span class="st">"green"</span>, <span class="st">"Sonra 2000"</span> <span class="ot">=</span> <span class="st">"red"</span>),</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">name =</span> <span class="st">"Zaman Aralığı"</span>,</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Once 1980"</span>, <span class="st">"Ara 1980-2000"</span>, <span class="st">"Sonra 2000"</span>)) <span class="sc">+</span></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>,<span class="at">hjust=</span><span class="dv">1</span>,<span class="at">vjust=</span><span class="fl">0.5</span>))<span class="sc">+</span></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Zaman Aralığı"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>vis2 <span class="ot">&lt;-</span> deprem_analiz <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(mahalle_bazli_bina, <span class="at">by =</span> <span class="st">"id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ilce_adi.x,once_1980, ara_1980_2000, sonra_2000, toplam_bina, can_kaybi_sayisi) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ilce_adi.x) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">toplam_once_1980 =</span> <span class="fu">sum</span>(once_1980), <span class="at">toplam_ara_1980_2000 =</span> <span class="fu">sum</span>(ara_1980_2000), <span class="at">toplam_sonra_2000 =</span> <span class="fu">sum</span>(sonra_2000))</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar chart çizimi</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(vis2, <span class="fu">aes</span>(<span class="at">x =</span> ilce_adi.x)) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> toplam_once_1980), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> toplam_ara_1980_2000), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"green"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> toplam_sonra_2000), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Toplam Değerler - İlçelere Göre"</span>, <span class="at">x =</span> <span class="st">"İlçe Adı"</span>, <span class="at">y =</span> <span class="st">"Toplam Değer"</span>) <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Once 1980"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"Ara 1980-2000"</span> <span class="ot">=</span> <span class="st">"green"</span>, <span class="st">"Sonra 2000"</span> <span class="ot">=</span> <span class="st">"red"</span>),</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">name =</span> <span class="st">"Zaman Aralığı"</span>,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Once 1980"</span>, <span class="st">"Ara 1980-2000"</span>, <span class="st">"Sonra 2000"</span>)) <span class="sc">+</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>,<span class="at">hjust=</span><span class="dv">1</span>,<span class="at">vjust=</span><span class="fl">0.5</span>))<span class="sc">+</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">"Zaman Aralığı"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="data_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
