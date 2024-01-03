@@ -6,6 +6,7 @@ format:
     code-fold: true
     code-summary: "Show the code"
 ---
+
 ## Analysis of "Eartquake Analysis and Results Data"
 
 
@@ -14,6 +15,7 @@ format:
     library(readr)
     library(knitr)
     library(ggplot2)
+    library(leaflet)
     
     deprem_analiz <- read.csv("Deprem_senaryosu_analiz_sonuçlar.csv")
     deprem_analiz$ilce_adi <- gsub("Ý", "İ", deprem_analiz$ilce_adi, fixed = TRUE)
@@ -21,9 +23,20 @@ format:
     deprem_analiz$ilce_adi <- gsub("Þ", "Ş", deprem_analiz$ilce_adi, fixed = TRUE)
     deprem_analiz$ilce_adi <- gsub("Þ", "Ş", deprem_analiz$ilce_adi, fixed = TRUE)
     
+    deprem_analiz <- data.frame(lapply(deprem_analiz, function(v) {
+      if (is.character(v)) return(tolower(v))
+      else return(v)
+    }))
+
+
     
-    
-    
+    istanbul_coordinates <- read.csv("istanbul_koordinatlar.csv")
+    istanbul_coordinates <- data.frame(lapply(istanbul_coordinates, function(v) {
+      if (is.character(v)) return(tolower(v))
+      else return(v)
+    }))    
+
+
     
     colnames(deprem_analiz)[1:4] <- c("id", "ilce_adi", "mahalle_adi", "mahalle_kodu")
     district_sum <- deprem_analiz %>% group_by(ilce_adi) %>% summarise(
@@ -47,7 +60,7 @@ format:
                                                                  .groups = 'drop')
     district_avg$ilce_adi <- factor(district_avg$ilce_adi, levels = unique(district_avg$ilce_adi))
     
-    kable(district_avg, caption="Data")
+    kable(head(district_avg, 10), caption="Data")
 ```
 
 ```{r, message=FALSE}
@@ -88,13 +101,47 @@ format:
 
 ```
 
+### average health
 ```{r, message=FALSE}
 avg_health
 ```
 
+### average building
 ```{r, message=FALSE}
   building_avg_bar
 ```
+
+### average building line
 ```{r, message=FALSE}
   building_avg_line
+```
+
+### danger zone calc
+```{r, message=FALSE}
+    danger_level <- as.numeric(district_sum$total_cok_agir_hasarli * district_avg$avg_can_kaybi)
+    istanbul_coordinates$danger_level <- as.numeric(format(danger_level, scientific = FALSE))
+    istanbul_coordinates <- istanbul_coordinates[order(istanbul_coordinates$danger_level, decreasing = TRUE),]
+    
+    istanbul_coordinates$color <- ifelse(istanbul_coordinates$danger_level > mean(istanbul_coordinates$danger_level), "red", "blue")
+    istanbul_coordinates$danger_level <- format(istanbul_coordinates$danger_level, scientific = FALSE)
+    
+    kable(head(istanbul_coordinates, 10), caption = "istanbul something.")
+
+```
+
+### danger zone map
+```{r, message=FALSE}
+
+    harita <- leaflet(istanbul_coordinates) %>%
+      addTiles() %>%
+      addCircleMarkers(
+        lng = ~longitude,
+        lat = ~latitude,
+        radius = 10,
+        color = ~color,
+        fillOpacity = 0.5,
+        popup = ~paste(ilceler, ": ", danger_level)
+      )
+
+    harita
 ```
