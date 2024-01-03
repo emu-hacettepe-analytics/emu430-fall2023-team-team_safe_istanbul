@@ -38,6 +38,14 @@ format:
                                                                  .groups = 'drop')
     district_avg$ilce_adi <- factor(district_avg$ilce_adi, levels = unique(district_avg$ilce_adi))
     
+
+
+
+    
+    
+```
+
+```{r, message=FALSE}
     building_avg_line <- ggplot(district_avg, aes(x = ilce_adi)) +
                 geom_line(aes(y = avg_cok_agir_hasarli, group = 1, color = "Çok Ağır Hasarlı")) +
                 geom_line(aes(y = avg_agir_hasarli, group = 1, color = "Ağır Hasarlı")) +
@@ -70,10 +78,18 @@ format:
                 theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
                 scale_color_manual(values = c("Can Kaybı" = "black", "Ağır Yaralı" = "red", 
                                               "Hafif Yaralı" = "blue"))
+    
+    
 
-    
-    
-    
-    
-    
+```
+
+```{r, message=FALSE}
+avg_health
+```
+
+```{r, message=FALSE}
+  building_avg_bar
+```
+```{r, message=FALSE}
+  building_avg_line
 ```
