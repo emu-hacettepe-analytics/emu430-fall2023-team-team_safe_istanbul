@@ -186,8 +186,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>deprem_analiz <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Deprem_senaryosu_analiz_sonuçlar.csv"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(deprem_analiz)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"ilce_adi"</span>, <span class="st">"mahalle_adi"</span>, <span class="st">"mahalle_kodu"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">str</span>(deprem_analiz), <span class="at">caption=</span><span class="st">"Structure of deprem_analiz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>deprem_analiz<span class="sc">$</span>ilce_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Ý"</span>, <span class="st">"İ"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>deprem_analiz<span class="sc">$</span>ilce_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Ð"</span>, <span class="st">"Ğ"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>deprem_analiz<span class="sc">$</span>ilce_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Þ"</span>, <span class="st">"Ş"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>deprem_analiz<span class="sc">$</span>ilce_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Þ"</span>, <span class="st">"Ş"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(deprem_analiz)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"ilce_adi"</span>, <span class="st">"mahalle_adi"</span>, <span class="st">"mahalle_kodu"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">str</span>(deprem_analiz), <span class="at">caption=</span><span class="st">"Structure of deprem_analiz"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   959 obs. of  16 variables:
@@ -223,20 +228,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"mahalle_bazli_bina_2017.csv"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mahalle_bazli_bina) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"ilce_adi"</span>, <span class="st">"mahalle_adi"</span>, <span class="st">"mahalle_kodu"</span>, <span class="st">"once_1980"</span>, <span class="st">"ara_1980_2000"</span>, <span class="st">"sonra_2000"</span>, <span class="st">"ara_1_4_kat"</span>, <span class="st">"ara_5_9_kat"</span>, <span class="st">"ara_9_19_kat"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>toplam_bina <span class="ot">&lt;-</span> mahalle_bazli_bina <span class="sc">%&gt;%</span> </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ara_1_4_kat,ara_5_9_kat,ara_9_19_kat) <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>( (.) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">toplam_bina =</span> <span class="fu">sum</span>(.))) <span class="sc">%&gt;%</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(toplam_bina)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="ot">&lt;-</span> <span class="fu">cbind</span>(mahalle_bazli_bina, toplam_bina)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mahalle_bazli_bina)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina<span class="sc">$</span>ilce_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Ý"</span>, <span class="st">"İ"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina<span class="sc">$</span>ilce_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Ð"</span>, <span class="st">"Ğ"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina<span class="sc">$</span>ilce_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Þ"</span>, <span class="st">"Ş"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina<span class="sc">$</span>ilce_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Þ"</span>, <span class="st">"Ş"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina<span class="sc">$</span>mahalle_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Ý"</span>, <span class="st">"İ"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina<span class="sc">$</span>mahalle_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Ð"</span>, <span class="st">"Ğ"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina<span class="sc">$</span>mahalle_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Þ"</span>, <span class="st">"Ş"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina<span class="sc">$</span>mahalle_adi <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"Þ"</span>, <span class="st">"Ş"</span>, deprem_analiz<span class="sc">$</span>ilce_adi, <span class="at">fixed =</span> <span class="cn">TRUE</span>)    </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>toplam_bina <span class="ot">&lt;-</span> mahalle_bazli_bina <span class="sc">%&gt;%</span> </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ara_1_4_kat,ara_5_9_kat,ara_9_19_kat) <span class="sc">%&gt;%</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>( (.) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">toplam_bina =</span> <span class="fu">sum</span>(.))) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  ungroup <span class="sc">%&gt;%</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(toplam_bina)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>mahalle_bazli_bina <span class="ot">&lt;-</span> <span class="fu">cbind</span>(mahalle_bazli_bina, toplam_bina)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mahalle_bazli_bina)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   959 obs. of  11 variables:
  $ id           : int  1 2 3 4 5 6 7 8 9 10 ...
  $ ilce_adi     : chr  "ADALAR" "ADALAR" "ADALAR" "ADALAR" ...
- $ mahalle_adi  : chr  "BURGAZADA" "HEYBELÝADA" "KINALIADA" "MADEN" ...
+ $ mahalle_adi  : chr  "ADALAR" "ADALAR" "ADALAR" "ADALAR" ...
  $ mahalle_kodu : int  40139 40142 40143 40140 40141 40490 99359 40478 40482 191981 ...
  $ once_1980    : int  433 836 610 863 842 0 0 0 0 0 ...
  $ ara_1980_2000: int  214 347 244 510 426 244 1360 685 565 332 ...
@@ -256,10 +272,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <colgroup>
 <col style="width: 2%">
 <col style="width: 8%">
-<col style="width: 13%">
+<col style="width: 9%">
 <col style="width: 10%">
-<col style="width: 7%">
-<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 11%">
 <col style="width: 8%">
 <col style="width: 9%">
 <col style="width: 9%">
@@ -285,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">ADALAR</td>
-<td style="text-align: left;">BURGAZADA</td>
+<td style="text-align: left;">ADALAR</td>
 <td style="text-align: right;">40139</td>
 <td style="text-align: right;">433</td>
 <td style="text-align: right;">214</td>
@@ -298,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">ADALAR</td>
-<td style="text-align: left;">HEYBELÝADA</td>
+<td style="text-align: left;">ADALAR</td>
 <td style="text-align: right;">40142</td>
 <td style="text-align: right;">836</td>
 <td style="text-align: right;">347</td>
@@ -311,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">ADALAR</td>
-<td style="text-align: left;">KINALIADA</td>
+<td style="text-align: left;">ADALAR</td>
 <td style="text-align: right;">40143</td>
 <td style="text-align: right;">610</td>
 <td style="text-align: right;">244</td>
@@ -324,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: right;">4</td>
 <td style="text-align: left;">ADALAR</td>
-<td style="text-align: left;">MADEN</td>
+<td style="text-align: left;">ADALAR</td>
 <td style="text-align: right;">40140</td>
 <td style="text-align: right;">863</td>
 <td style="text-align: right;">510</td>
@@ -337,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: right;">5</td>
 <td style="text-align: left;">ADALAR</td>
-<td style="text-align: left;">NÝZAM</td>
+<td style="text-align: left;">ADALAR</td>
 <td style="text-align: right;">40141</td>
 <td style="text-align: right;">842</td>
 <td style="text-align: right;">426</td>
@@ -350,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: right;">6</td>
 <td style="text-align: left;">ARNAVUTKÖY</td>
-<td style="text-align: left;">ADNAN MENDERES</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
 <td style="text-align: right;">40490</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">244</td>
@@ -363,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: right;">7</td>
 <td style="text-align: left;">ARNAVUTKÖY</td>
-<td style="text-align: left;">ANADOLU</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
 <td style="text-align: right;">99359</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1360</td>
@@ -376,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: right;">8</td>
 <td style="text-align: left;">ARNAVUTKÖY</td>
-<td style="text-align: left;">ARNAVUTKÖY MERKEZ</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
 <td style="text-align: right;">40478</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">685</td>
@@ -389,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: right;">9</td>
 <td style="text-align: left;">ARNAVUTKÖY</td>
-<td style="text-align: left;">ATATÜRK</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
 <td style="text-align: right;">40482</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">565</td>
@@ -402,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: right;">10</td>
 <td style="text-align: left;">ARNAVUTKÖY</td>
-<td style="text-align: left;">BAKLALI</td>
+<td style="text-align: left;">ARNAVUTKÖY</td>
 <td style="text-align: right;">191981</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">332</td>
@@ -436,11 +452,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">ÜMRANÝYE</td>
+<td style="text-align: left;">ÜMRANİYE</td>
 <td style="text-align: right;">52612</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">PENDÝK</td>
+<td style="text-align: left;">PENDİK</td>
 <td style="text-align: right;">51491</td>
 </tr>
 <tr class="odd">
@@ -448,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">51201</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">SÝLÝVRÝ</td>
+<td style="text-align: left;">SİLİVRİ</td>
 <td style="text-align: right;">50014</td>
 </tr>
 <tr class="odd">
@@ -456,11 +472,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: right;">49360</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">FATÝH</td>
+<td style="text-align: left;">FATİH</td>
 <td style="text-align: right;">43560</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">BAÐCILAR</td>
+<td style="text-align: left;">BAĞCILAR</td>
 <td style="text-align: right;">42439</td>
 </tr>
 <tr class="even">
@@ -546,12 +562,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="data_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p><strong>The plot shown above shows us total loss vs total number of buildings.</strong></p>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>vis2 <span class="ot">&lt;-</span> deprem_analiz <span class="sc">%&gt;%</span> </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(mahalle_bazli_bina, <span class="at">by =</span> <span class="st">"id"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ilce_adi.x,once_1980, ara_1980_2000, sonra_2000, toplam_bina, can_kaybi_sayisi) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ilce_adi.x,once_1980, ara_1980_2000, sonra_2000, toplam_bina, can_kaybi_sayisi,toplam_bina) <span class="sc">%&gt;%</span> </span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ilce_adi.x) <span class="sc">%&gt;%</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">toplam_once_1980 =</span> <span class="fu">sum</span>(once_1980), <span class="at">toplam_ara_1980_2000 =</span> <span class="fu">sum</span>(ara_1980_2000), <span class="at">toplam_sonra_2000 =</span> <span class="fu">sum</span>(sonra_2000))</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -571,7 +588,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <p><img src="data_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
-</div></li>
+</div>
+<p><strong>This plot shows us total building for each time zone vs district.</strong></p>
+<p>Note: blue –&gt; before 1980, green –&gt; between 1980 - 2000, red –&gt; after 2000.</p></li>
 </ol>
 
 
