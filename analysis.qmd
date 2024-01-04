@@ -9,13 +9,14 @@ format:
 
 ## Analysis of "Eartquake Analysis and Results Data"
 
-
 ```{r, message=FALSE}
     library(dplyr)
     library(readr)
     library(knitr)
     library(ggplot2)
     library(leaflet)
+    library(patchwork)
+    library(readxl)
     
     deprem_analiz <- read.csv("Deprem_senaryosu_analiz_sonuçlar.csv")
     deprem_analiz$ilce_adi <- gsub("Ý", "İ", deprem_analiz$ilce_adi, fixed = TRUE)
@@ -27,6 +28,38 @@ format:
       if (is.character(v)) return(tolower(v))
       else return(v)
     }))
+    
+    nufus <- read_excel("belediye_nufuslar_2019.xlsx")
+    nufus <- data.frame(lapply(nufus, function(v) {
+      if (is.character(v)) return(tolower(v))
+      else return(v)
+    }))
+    nufus$Belediyeler <- gsub("belediyesi", "", nufus$Belediyeler)
+   
+    mahalle_bazli_bina <- read.csv("mahalle_bazli_bina_2017.csv")
+colnames(mahalle_bazli_bina) <- c("id", "ilce_adi", "mahalle_adi", "mahalle_kodu", "once_1980", "ara_1980_2000", "sonra_2000", "ara_1_4_kat", "ara_5_9_kat", "ara_9_19_kat")
+mahalle_bazli_bina$ilce_adi <- gsub("Ý", "İ", deprem_analiz$ilce_adi, fixed = TRUE)
+mahalle_bazli_bina$ilce_adi <- gsub("Ð", "Ğ", deprem_analiz$ilce_adi, fixed = TRUE)
+mahalle_bazli_bina$ilce_adi <- gsub("Þ", "Ş", deprem_analiz$ilce_adi, fixed = TRUE)
+mahalle_bazli_bina$ilce_adi <- gsub("Þ", "Ş", deprem_analiz$ilce_adi, fixed = TRUE)
+
+mahalle_bazli_bina$mahalle_adi <- gsub("Ý", "İ", deprem_analiz$ilce_adi, fixed = TRUE)
+mahalle_bazli_bina$mahalle_adi <- gsub("Ð", "Ğ", deprem_analiz$ilce_adi, fixed = TRUE)
+mahalle_bazli_bina$mahalle_adi <- gsub("Þ", "Ş", deprem_analiz$ilce_adi, fixed = TRUE)
+mahalle_bazli_bina$mahalle_adi <- gsub("Þ", "Ş", deprem_analiz$ilce_adi, fixed = TRUE)    
+
+toplam_bina <- mahalle_bazli_bina %>% 
+  select(ara_1_4_kat,ara_5_9_kat,ara_9_19_kat) %>%
+  rowwise() %>%
+  do( (.) %>% as.data.frame() %>% mutate(toplam_bina = sum(.))) %>%
+  ungroup %>%
+  select(toplam_bina)
+mahalle_bazli_bina <- cbind(mahalle_bazli_bina, toplam_bina)
+
+bina_sayisi <- mahalle_bazli_bina %>% 
+  group_by(ilce_adi) %>%
+  summarize(ilce_bazli_bina = sum(toplam_bina)) #shows the total number of                                                        buildings within each district
+bina_sayisi <- data.frame(bina_sayisi)
 
 
     
@@ -35,7 +68,7 @@ format:
       if (is.character(v)) return(tolower(v))
       else return(v)
     }))    
-
+    
 
     
     colnames(deprem_analiz)[1:4] <- c("id", "ilce_adi", "mahalle_adi", "mahalle_kodu")
@@ -49,6 +82,9 @@ format:
                                                                   total_hafif_yarali = sum(hafif_yarali_sayisi),
                                                                   .groups = 'drop')
     
+district_sum <- data.frame(district_sum)
+
+
     district_avg <- deprem_analiz %>% group_by(ilce_adi) %>% summarise(
                                                                   avg_cok_agir_hasarli = mean(cok_agir_hasarli_bina_sayisi),
                                                                   avg_agir_hasarli = mean(agir_hasarli_bina_sayisi),
@@ -61,6 +97,11 @@ format:
     district_avg$ilce_adi <- factor(district_avg$ilce_adi, levels = unique(district_avg$ilce_adi))
     
     kable(head(district_avg, 10), caption="Data")
+```
+
+```{r}
+istanbul_df <- full_join(district_sum, bina_sayisi, by = "ilce_adi")
+populasyon <- inner_join(nufus, istanbul_coordinates, by = c("Belediyeler" = "ilceler"))
 ```
 
 ```{r, message=FALSE}
@@ -102,21 +143,25 @@ format:
 ```
 
 ### average health
+
 ```{r, message=FALSE}
 avg_health
 ```
 
 ### average building
+
 ```{r, message=FALSE}
   building_avg_bar
 ```
 
 ### average building line
+
 ```{r, message=FALSE}
   building_avg_line
 ```
 
 ### danger zone calc
+
 ```{r, message=FALSE}
     danger_level <- as.numeric(district_sum$total_cok_agir_hasarli * district_avg$avg_can_kaybi)
     istanbul_coordinates$danger_level <- as.numeric(format(danger_level, scientific = FALSE))
@@ -130,6 +175,7 @@ avg_health
 ```
 
 ### danger zone map
+
 ```{r, message=FALSE}
 
     harita <- leaflet(istanbul_coordinates) %>%
