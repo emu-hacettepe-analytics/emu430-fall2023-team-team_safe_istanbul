@@ -16,6 +16,7 @@ format:
     library(ggplot2)
     library(leaflet)
     library(readxl)
+    library(gridExtra)
     
     deprem_analiz <- read.csv("Deprem_senaryosu_analiz_sonuçlar.csv")
     deprem_analiz$ilce_adi <- gsub("Ý", "İ", deprem_analiz$ilce_adi, fixed = TRUE)
@@ -148,6 +149,24 @@ avg_health
 
 ```
 
+### Death/Population
+```{r, message=FALSE}
+    istanbul_df %>%
+  select(ilce_adi, X2019.yılı.nüfusları, can_kaybi_sayisi) %>%
+  ggplot(aes(x = ilce_adi, y = can_kaybi_sayisi)) +
+  geom_point(aes(size = X2019.yılı.nüfusları, color = cut(((can_kaybi_sayisi / X2019.yılı.nüfusları) * 1000), 
+                                                          breaks = c(0, 0.7, 2, 5), 
+                                                          labels = c("Least Dangerous", "Medium Dangerous", "High Dangerous")))) +
+  scale_color_manual(values = c("High Dangerous" = "red", "Medium Dangerous" = "blue", "Least Dangerous" = "green"))+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1), legend.position = "none") +
+  xlab("District") +
+  ylab("Death") +
+  scale_y_continuous(limits = c(0, max(istanbul_df$can_kaybi_sayisi) * 1.1)) +
+  scale_size_continuous(range=c(2,8))
+
+```
+
 ### danger zone map
 
 ```{r, message=FALSE}
@@ -165,3 +184,58 @@ avg_health
 
     harita
 ```
+
+### Bina - Tesisat Hasar Türleri ve Can Kaybı Arasındaki İlişki
+#### Bina Hasar vs Can Kaybı
+```{r, message=FALSE}
+    cor_func <- function(x, y) {
+  cor_coef <- cor(x, y)
+  cor_label <- paste("Correlation:", round(cor_coef, 3))
+  return(cor_label)
+}
+
+plot1 <- ggplot(istanbul_df, aes(x = cok_agir_hasarli_bina_sayisi)) +
+  geom_point(aes(y = can_kaybi_sayisi), color = "blue") +
+  geom_smooth(aes(y = can_kaybi_sayisi), method = "lm", se = TRUE, color = "blue") +
+  geom_text(aes(x = min(cok_agir_hasarli_bina_sayisi), y = max(can_kaybi_sayisi), label = cor_func(can_kaybi_sayisi, cok_agir_hasarli_bina_sayisi)), 
+            hjust = 0, vjust = -2.5, color = "black") +
+  theme_minimal() +
+  facet_wrap(~"Çok Ağır Hasarlı Bina Sayısı", scales = "free") +
+  ylab("") + xlab("")
+
+plot2 <- ggplot(istanbul_df, aes(x = agir_hasarli_bina_sayisi)) +
+  geom_point(aes(y = can_kaybi_sayisi), color = "red") +
+  geom_smooth(aes(y = can_kaybi_sayisi), method = "lm", se = TRUE, color = "red") +
+  geom_text(aes(x = min(agir_hasarli_bina_sayisi), y = max(can_kaybi_sayisi), label = cor_func(can_kaybi_sayisi, agir_hasarli_bina_sayisi)), 
+            hjust = 0, vjust = -1, color = "black") +
+  theme_minimal() +
+  facet_wrap(~"Ağır Hasarlı Bina Sayısı", scales = "free") +
+  ylab("") + xlab("")
+
+plot3 <- ggplot(istanbul_df, aes(x = orta_hasarli_bina_sayisi)) +
+  geom_point(aes(y = can_kaybi_sayisi), color = "green") +
+  geom_smooth(aes(y = can_kaybi_sayisi), method = "lm", se = TRUE, color = "green") +
+  geom_text(aes(x = min(orta_hasarli_bina_sayisi), y = max(can_kaybi_sayisi), label = cor_func(can_kaybi_sayisi, orta_hasarli_bina_sayisi)), 
+            hjust = 0, vjust = 1, color = "black") +
+  theme_minimal() +
+  facet_wrap(~"Orta Hasarlı Bina Sayısı", scales = "free") +
+  ylab("") + xlab("")
+
+plot4 <- ggplot(istanbul_df, aes(x = hafif_hasarli_bina_sayisi)) +
+  geom_point(aes(y = can_kaybi_sayisi), color = "purple") +
+  geom_smooth(aes(y = can_kaybi_sayisi), method = "lm", se = TRUE, color = "purple") +
+  geom_text(aes(x = min(hafif_hasarli_bina_sayisi), y = max(can_kaybi_sayisi), label = cor_func(can_kaybi_sayisi, hafif_hasarli_bina_sayisi)), 
+            hjust = 0, vjust = 1, color = "black") +
+  theme_minimal() +
+  facet_wrap(~"Hafif Hasarlı Bina Sayısı", scales = "free") +
+  ylab("") + xlab("")
+
+grid.arrange(plot1, plot2, plot3, plot4, ncol = 2)
+```
+
+
+#### Tesisat Hasar vs Can Kaybı
+```{r, message=FALSE}
+
+```
+
