@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,8 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
@@ -140,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
-    <a href="https://github.com/orgs/emu-hacettepe-analytics/teams/team_safe_istanbul" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://github.com/orgs/emu-hacettepe-analytics/teams/team_safe_istanbul" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
@@ -196,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="analysis-of-eartquake-analysis-and-results-data">Analysis of “Eartquake Analysis and Results Data”</h2>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(readr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">library</span>(knitr)</span>
@@ -396,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    building_avg_line <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(district_avg, <span class="fu">aes</span>(<span class="at">x =</span> ilce_adi)) <span class="sc">+</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> avg_cok_agir_hasarli, <span class="at">group =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"Çok Ağır Hasarlı"</span>)) <span class="sc">+</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> avg_agir_hasarli, <span class="at">group =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"Ağır Hasarlı"</span>)) <span class="sc">+</span></span>
@@ -435,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="average-health">average health</h3>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>avg_health</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -447,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="average-building">average building</h3>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  building_avg_bar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -459,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="average-building-line">average building line</h3>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  building_avg_line</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -471,15 +470,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="danger-zone-calc">danger zone calc</h3>
 <div class="cell">
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    danger_level <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(district_sum<span class="sc">$</span>total_cok_agir_hasarli <span class="sc">*</span> district_avg<span class="sc">$</span>avg_can_kaybi)</span>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>    danger_level <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(istanbul_df<span class="sc">$</span>can_kaybi_sayisi<span class="sc">/</span>istanbul_df<span class="sc">$</span>X2019.yılı.nüfusları <span class="sc">*</span> <span class="dv">1000</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    istanbul_coordinates<span class="sc">$</span>danger_level <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(danger_level, <span class="at">scientific =</span> <span class="cn">FALSE</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    istanbul_coordinates <span class="ot">&lt;-</span> istanbul_coordinates[<span class="fu">order</span>(istanbul_coordinates<span class="sc">$</span>danger_level, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    istanbul_coordinates<span class="sc">$</span>color <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(istanbul_coordinates<span class="sc">$</span>danger_level <span class="sc">&gt;</span> <span class="fu">mean</span>(istanbul_coordinates<span class="sc">$</span>danger_level), <span class="st">"red"</span>, <span class="st">"blue"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    istanbul_coordinates<span class="sc">$</span>danger_level <span class="ot">&lt;-</span> <span class="fu">format</span>(istanbul_coordinates<span class="sc">$</span>danger_level, <span class="at">scientific =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable</span>(<span class="fu">head</span>(istanbul_coordinates, <span class="dv">10</span>), <span class="at">caption =</span> <span class="st">"istanbul something."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    istanbul_coordinates<span class="sc">$</span>color <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(istanbul_coordinates<span class="sc">$</span>danger_level <span class="sc">&gt;</span> <span class="dv">2</span>, <span class="st">"red"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                                         <span class="fu">ifelse</span>(istanbul_coordinates<span class="sc">$</span>danger_level <span class="sc">&gt;</span> <span class="fl">0.75</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    istanbul_coordinates<span class="sc">$</span>danger_level <span class="ot">&lt;-</span> <span class="fu">format</span>(istanbul_coordinates<span class="sc">$</span>danger_level, <span class="at">scientific =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable</span>(<span class="fu">head</span>(istanbul_coordinates, <span class="dv">10</span>), <span class="at">caption =</span> <span class="st">"istanbul something."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
@@ -496,43 +496,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">bağcılar</td>
-<td style="text-align: right;">41.04473</td>
-<td style="text-align: right;">28.83371</td>
-<td style="text-align: left;">118169.8181818</td>
-<td style="text-align: left;">red</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">24</td>
-<td style="text-align: left;">kağıthane</td>
-<td style="text-align: right;">41.08303</td>
-<td style="text-align: right;">28.98385</td>
-<td style="text-align: left;">89457.1428571</td>
-<td style="text-align: left;">red</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">6</td>
-<td style="text-align: left;">bahçelievler</td>
-<td style="text-align: right;">41.00029</td>
-<td style="text-align: right;">28.86375</td>
-<td style="text-align: left;">54531.4666667</td>
-<td style="text-align: left;">red</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">18</td>
-<td style="text-align: left;">esenyurt</td>
-<td style="text-align: right;">41.04892</td>
-<td style="text-align: right;">28.65812</td>
-<td style="text-align: left;">54231.0877193</td>
-<td style="text-align: left;">red</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">8</td>
-<td style="text-align: left;">başakşehir</td>
-<td style="text-align: right;">41.10273</td>
-<td style="text-align: right;">28.77246</td>
-<td style="text-align: left;">42658.3636364</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">adalar</td>
+<td style="text-align: right;">40.86780</td>
+<td style="text-align: right;">29.13310</td>
+<td style="text-align: left;">4.987531172</td>
 <td style="text-align: left;">red</td>
 </tr>
 <tr class="even">
@@ -540,40 +508,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td style="text-align: left;">bakırköy</td>
 <td style="text-align: right;">40.98064</td>
 <td style="text-align: right;">28.86287</td>
-<td style="text-align: left;">29025.4545455</td>
+<td style="text-align: left;">4.562923412</td>
 <td style="text-align: left;">red</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">33</td>
-<td style="text-align: left;">sultangazi</td>
-<td style="text-align: right;">41.10817</td>
-<td style="text-align: right;">28.86131</td>
-<td style="text-align: left;">26206.1538462</td>
-<td style="text-align: left;">red</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">20</td>
 <td style="text-align: left;">fatih</td>
 <td style="text-align: right;">41.01446</td>
 <td style="text-align: right;">28.95455</td>
-<td style="text-align: left;">23442.5454545</td>
-<td style="text-align: left;">red</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">11</td>
-<td style="text-align: left;">beykoz</td>
-<td style="text-align: right;">41.14390</td>
-<td style="text-align: right;">29.09060</td>
-<td style="text-align: left;">16916.7000000</td>
+<td style="text-align: left;">3.349206707</td>
 <td style="text-align: left;">red</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">15</td>
-<td style="text-align: left;">çatalca</td>
-<td style="text-align: right;">41.14200</td>
-<td style="text-align: right;">28.46380</td>
-<td style="text-align: left;">15591.1250000</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">bahçelievler</td>
+<td style="text-align: right;">41.00029</td>
+<td style="text-align: right;">28.86375</td>
+<td style="text-align: left;">2.672409702</td>
 <td style="text-align: left;">red</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">22</td>
+<td style="text-align: left;">güngören</td>
+<td style="text-align: right;">41.01981</td>
+<td style="text-align: right;">28.87484</td>
+<td style="text-align: left;">2.605021403</td>
+<td style="text-align: left;">red</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">39</td>
+<td style="text-align: left;">zeytinburnu</td>
+<td style="text-align: right;">41.00562</td>
+<td style="text-align: right;">28.90820</td>
+<td style="text-align: left;">2.275405860</td>
+<td style="text-align: left;">red</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">26</td>
+<td style="text-align: left;">küçükçekmece</td>
+<td style="text-align: right;">40.99600</td>
+<td style="text-align: right;">28.77480</td>
+<td style="text-align: left;">1.910897920</td>
+<td style="text-align: left;">blue</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">bayrampaşa</td>
+<td style="text-align: right;">41.05125</td>
+<td style="text-align: right;">28.89847</td>
+<td style="text-align: left;">1.892732997</td>
+<td style="text-align: left;">blue</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">bağcılar</td>
+<td style="text-align: right;">41.04473</td>
+<td style="text-align: right;">28.83371</td>
+<td style="text-align: left;">1.582284852</td>
+<td style="text-align: left;">blue</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">silivri</td>
+<td style="text-align: right;">41.07390</td>
+<td style="text-align: right;">28.24640</td>
+<td style="text-align: left;">1.538788072</td>
+<td style="text-align: left;">blue</td>
 </tr>
 </tbody>
 </table>
@@ -584,7 +584,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="deathpopulation">Death/Population</h3>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    istanbul_df <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ilce_adi, X2019.yılı.nüfusları, can_kaybi_sayisi) <span class="sc">%&gt;%</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ilce_adi, <span class="at">y =</span> can_kaybi_sayisi)) <span class="sc">+</span></span>
@@ -608,23 +608,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="danger-zone-map">danger zone map</h3>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    harita <span class="ot">&lt;-</span> <span class="fu">leaflet</span>(istanbul_coordinates) <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">addCircleMarkers</span>(</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">lng =</span> <span class="sc">~</span>longitude,</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">lat =</span> <span class="sc">~</span>latitude,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">radius =</span> <span class="dv">10</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">radius =</span> istanbul_df<span class="sc">$</span>X2019.yılı.nüfusları<span class="sc">/</span><span class="dv">50000</span>,</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="sc">~</span>color,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">fillOpacity =</span> <span class="fl">0.5</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">fillOpacity =</span> <span class="fl">0.8</span>,</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">popup =</span> <span class="sc">~</span><span class="fu">paste</span>(ilceler, <span class="st">": "</span>, danger_level)</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    harita</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-aaa40051c1ac893472ee" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-aaa40051c1ac893472ee">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[41.0447291,41.08303245,41.0002895,41.04892005,41.1027276,40.9806359,41.1081703,41.014462,41.1439,41.142,41.0543213,40.9801353,40.9658834,40.8678,41.0128,40.9019,41.0010788,41.0734206,41.0620017,41.0198102,40.996,41.0460444,41.0512479,40.99943825,40.9847487,41.1667,41.02721865,40.98113355,41.0739,40.943396,41.0056152,40.89265165,40.8775,41.0434614,41.0716178,41.1754,41.061672,41.2482594,41.0352214],[28.8337135105443,28.9838506957925,28.8637451,28.6581173127615,28.7724595536567,28.8628745,28.8613138,28.9545506959692,29.0906,28.4638,29.2445387,28.7175465,29.2723659,29.1331,28.5382,29.1737,28.642054,28.9015561330191,28.8695377605765,28.8748379095875,28.7748,28.9253241,28.8984693647258,29.2252495030497,29.1067199,29.05,29.1274593422018,29.0650755879103,28.2464,29.159671719134,28.9081983220057,29.3721729469573,29.2725,28.9624575679829,29.0305381519225,29.6133,28.9842605962855,28.6814495117807,29.0573344413904],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["red","red","red","red","red","red","red","red","red","red","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["red","red","red","red","red","red","red","red","red","red","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue"],"fillOpacity":0.5},null,null,["bağcılar :  118169.8181818","kağıthane :   89457.1428571","bahçelievler :   54531.4666667","esenyurt :   54231.0877193","başakşehir :   42658.3636364","bakırköy :   29025.4545455","sultangazi :   26206.1538462","fatih :   23442.5454545","beykoz :   16916.7000000","çatalca :   15591.1250000","çekmeköy :   13132.3023256","avcılar :   10834.5000000","sultanbeyli :    7031.0588235","adalar :    6277.6000000","büyükçekmece :    5268.0000000","kartal :    3081.0000000","beylikdüzü :    1977.1111111","gaziosmanpaşa :    1881.9047619","esenler :    1800.0000000","güngören :    1751.2000000","küçükçekmece :    1484.1666667","eyüpsultan :    1128.7500000","bayrampaşa :     816.5000000","sancaktepe :     735.7714286","ataşehir :     643.9411765","sarıyer :     530.4666667","ümraniye :     420.3030303","kadıköy :     415.5789474","silivri :     231.8000000","maltepe :     212.2105263","zeytinburnu :     149.6000000","tuzla :     126.0000000","pendik :      88.5789474","beyoğlu :      72.3478261","beşiktaş :      62.7777778","şile :       6.4615385","şişli :       0.7619048","arnavutköy :       0.0000000","üsküdar :       0.0000000"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[40.8678,41.2482594],"lng":[28.2464,29.6133]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-829438217a646566d51f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-829438217a646566d51f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[40.8678,40.9806359,41.014462,41.0002895,41.0198102,41.0056152,40.996,41.0512479,41.0447291,41.0739,41.0010788,41.0620017,41.0128,41.04892005,40.9801353,40.89265165,41.0434614,40.943396,41.0460444,40.98113355,40.9658834,40.9019,41.0734206,40.8775,40.9847487,41.1081703,41.08303245,41.0352214,41.1027276,41.0716178,40.99943825,41.061672,41.1439,41.1667,41.02721865,41.142,41.0543213,41.2482594,41.1754],[29.1331,28.8628745,28.9545506959692,28.8637451,28.8748379095875,28.9081983220057,28.7748,28.8984693647258,28.8337135105443,28.2464,28.642054,28.8695377605765,28.5382,28.6581173127615,28.7175465,29.3721729469573,28.9624575679829,29.159671719134,28.9253241,29.0650755879103,29.2723659,29.1737,28.9015561330191,29.2725,29.1067199,28.8613138,28.9838506957925,29.0573344413904,28.7724595536567,29.0305381519225,29.2252495030497,28.9842605962855,29.0906,29.05,29.1274593422018,28.4638,29.2445387,28.6814495117807,29.6133],[0.30476,5.64976,8.50188,8.977639999999999,14.9025,12.22118,4.58478,9.20518,5.4947,3.65298,4.9652,7.04824,4.66646,5.08206,1.47436,5.29016,9.006880000000001,19.09158,8.010260000000001,8.861800000000001,9.83924,5.78882,9.654260000000001,8.9605,9.41352,15.85642,10.26632,14.23788,8.73466,6.94428,0.75384,3.8736,5.59634,6.72042,10.6913,5.348,14.2056,10.6365,5.87148],null,null,{"interactive":true,"className":"","stroke":true,"color":["red","red","red","red","red","red","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["red","red","red","red","red","red","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green","green"],"fillOpacity":0.8},null,null,["adalar :  4.987531172","bakırköy :  4.562923412","fatih :  3.349206707","bahçelievler :  2.672409702","güngören :  2.605021403","zeytinburnu :  2.275405860","küçükçekmece :  1.910897920","bayrampaşa :  1.892732997","bağcılar :  1.582284852","silivri :  1.538788072","beylikdüzü :  1.495408783","esenler :  1.416694793","büyükçekmece :  1.133398661","esenyurt :  1.050724979","avcılar :  1.035906987","tuzla :  1.002243829","beyoğlu :  0.930041188","maltepe :  0.455859549","eyüpsultan :  0.419462040","kadıköy :  0.393608625","sultanbeyli :  0.376910368","kartal :  0.373930262","gaziosmanpaşa :  0.284574825","pendik :  0.273917184","ataşehir :  0.209365458","sultangazi :  0.203704564","kağıthane :  0.187489537","üsküdar :  0.178630189","başakşehir :  0.154260970","beşiktaş :  0.142349534","sancaktepe :  0.109906968","şişli :  0.102887394","beykoz :  0.100700878","sarıyer :  0.095042251","ümraniye :  0.059131610","çatalca :  0.054260832","çekmeköy :  0.003780604","arnavutköy :  0.000000000","şile :  0.000000000"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[40.8678,41.2482594],"lng":[28.2464,29.6133]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -634,7 +634,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="bina-hasar-vs-can-kaybı">Bina Hasar vs Can Kaybı</h4>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    cor_func <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  cor_coef <span class="ot">&lt;-</span> <span class="fu">cor</span>(x, y)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  cor_label <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Correlation:"</span>, <span class="fu">round</span>(cor_coef, <span class="dv">3</span>))</span>

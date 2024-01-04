@@ -138,11 +138,12 @@ avg_health
 ### danger zone calc
 
 ```{r, message=FALSE}
-    danger_level <- as.numeric(district_sum$total_cok_agir_hasarli * district_avg$avg_can_kaybi)
+    danger_level <- as.numeric(istanbul_df$can_kaybi_sayisi/istanbul_df$X2019.yılı.nüfusları * 1000)
     istanbul_coordinates$danger_level <- as.numeric(format(danger_level, scientific = FALSE))
     istanbul_coordinates <- istanbul_coordinates[order(istanbul_coordinates$danger_level, decreasing = TRUE),]
     
-    istanbul_coordinates$color <- ifelse(istanbul_coordinates$danger_level > mean(istanbul_coordinates$danger_level), "red", "blue")
+    istanbul_coordinates$color <- ifelse(istanbul_coordinates$danger_level > 2, "red",
+                                         ifelse(istanbul_coordinates$danger_level > 0.75, "blue", "green"))
     istanbul_coordinates$danger_level <- format(istanbul_coordinates$danger_level, scientific = FALSE)
     
     kable(head(istanbul_coordinates, 10), caption = "istanbul something.")
@@ -176,9 +177,9 @@ avg_health
       addCircleMarkers(
         lng = ~longitude,
         lat = ~latitude,
-        radius = 10,
+        radius = istanbul_df$X2019.yılı.nüfusları/50000,
         color = ~color,
-        fillOpacity = 0.5,
+        fillOpacity = 0.65,
         popup = ~paste(ilceler, ": ", danger_level)
       )
 
