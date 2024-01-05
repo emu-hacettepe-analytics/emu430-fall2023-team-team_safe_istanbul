@@ -11,6 +11,7 @@ Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.i
 
 # Data Sets
 
+
 1.  [Earthquake Scenario Analysis Results](https://data.ibb.gov.tr/tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193)
 
     In this dataset some column names has been changed. Structure and first 10 observation can be seen below. Download [R.Data](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-team_safe_istanbul/blob/master/deprem_analiz.RData) file to see the entire dataframe.
