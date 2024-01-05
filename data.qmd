@@ -1,11 +1,12 @@
 ---
-title: "Data"
+title: <p align="center"> Data </p>
 
 format:
   html:
     code-fold: true
     code-summary: "Show the code"
 ---
+<img src="https://cdn.dribbble.com/users/668001/screenshots/3861883/data-graphic-animation.gif" class="img-fluid" alt="<>">
 
 Datasets shown below downloaded from [Istanbul Metropolitan Municipality](data.ibb.gov.tr) website as csv and xlsx files. Separate links are also provided.
 

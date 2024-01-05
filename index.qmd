@@ -1,23 +1,20 @@
 ---
-title: "Team Safe İstanbul"
+title: <p align="center"> Team Safe Istanbul </p>
 sidebar: false 
 ---
-
-This is our project webpage.
-
-Please stay tuned to follow our project activities.
+<p align="center"> EMU430 - Data Analytics Term Project </p>
+<p align="center"> This is our project webpage. </p>
+<p align="center"> Please stay tuned to follow our project activities. </p>
+<img src="https://miro.medium.com/v2/resize:fit:1400/1*ei_Ce5ZqUHkhF9N1oku3Hg.gif" class="img-fluid" alt="<>">
 
 # Team Members
 
-1.  [Ömer Faruk Çiftçi](https://emu-hacettepe-analytics.github.io/emu430-fall2023-omerfee/)
+1. <a href="https://emu-hacettepe-analytics.github.io/emu430-fall2023-memreerkan/" class="btn btn-outline-primary" target="_blank">Muhammed Emre Erkan</a>
+2. <a href="https://emu-hacettepe-analytics.github.io/emu430-fall2023-tahakarakaya26/" class="btn btn-outline-primary" target="_blank">Ahmet Taha Karakaya</a>
+3. <a href="https://emu-hacettepe-analytics.github.io/emu430-fall2023-dogayagmurdeniz/" class="btn btn-outline-primary" target="_blank">Doğa Yağmur Deniz</a>
+4. <a href="https://emu-hacettepe-analytics.github.io/emu430-fall2023-omerfee/" class="btn btn-outline-primary" target="_blank">Ömer Faruk Çiftçi</a>
+5. <a href="https://emu-hacettepe-analytics.github.io/emu430-fall2023-cemilnese/" class="btn btn-outline-primary" target="_blank">Cemil Neşe</a>
 
-2.  [Doğa Yağmur Deniz](https://emu-hacettepe-analytics.github.io/emu430-fall2023-dogayagmurdeniz/)
-
-3.  [Muhammed Emre Erkan](https://emu-hacettepe-analytics.github.io/emu430-fall2023-memreerkan/)
-
-4.  [Cemil Neşe](https://emu-hacettepe-analytics.github.io/emu430-fall2023-cemilnese/)
-
-5.  [Ahmet Taha Karakaya](https://emu-hacettepe-analytics.github.io/emu430-fall2023-tahakarakaya26/)
 
 # Project Topic
 

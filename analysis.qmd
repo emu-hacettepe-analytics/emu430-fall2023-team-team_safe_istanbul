@@ -1,5 +1,5 @@
 ---
-title: "Team Safe Istanbul"
+title: "Analysis - Team Safe Istanbul"
 
 format:
   html:
@@ -8,6 +8,7 @@ format:
 ---
 
 ## Earthquake Analysis and Output Data
+<img src="https://miro.medium.com/v2/resize:fit:960/1*DwU2AWUUbZgLdHiRY-Ky5w.gif" class="img-fluid" alt="<>">
 
 ### Importing Libraries and Data Cleaning
 
